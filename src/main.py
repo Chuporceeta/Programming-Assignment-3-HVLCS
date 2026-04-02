@@ -36,11 +36,8 @@ if __name__ == '__main__':
             else:
                 DP[i][j] = max(DP[i-1][j], DP[i][j-1])
 
-
+    solution = ""
     # BACKTRACKING HERE
-    
-
-    output = str(DP[len(A)][len(B)]) + '\n' # + reconstructed subseq
 
     if output_file is not None:
         with open(output_file, 'w') as f:

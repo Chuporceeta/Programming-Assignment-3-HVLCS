@@ -75,6 +75,12 @@ v(a_i)+OPT(i-1, j-1)  & \quad a_i = b_j
 \end{cases}
 $$
 
+The base case returns 0 if index i or j is 0 so the algorithm starts at 0.
+If $a_i$ does not equal $b_j$ then it returns the previous largest solution.
+If $a_i$ does equal $b_j$ then returns the current solution plus the value of $a_i$ to the answer.
+
+This is correct because the base case is accounted for and starts the number off at 0, and then for each matching character in a given sequence if character A and character B match then it will add the value of the character to the solution. It is always adding to the previous largest solution to maximize the value therefore it will find the maximum value.
+
 ## Question 3: Big-Oh
 
 Give pseudocode of an algorithm to compute the length of the HVLCS of given strings A and B. What is the runtime of your algorithm?
