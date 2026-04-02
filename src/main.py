@@ -38,6 +38,21 @@ if __name__ == '__main__':
 
     solution = ""
     # BACKTRACKING HERE
+    for i in range(len(A) - 1, -1, -1):
+        for j in range(len(B)-1, -1, -1):
+
+            if DP[i][j] == DP[i-1][j-1] + values[A[i-1]]: # include
+                solution += str(DP[i][j])
+                i = i-1
+                pass
+
+            elif DP[i][j] == max(DP[i-1][j], DP[i][j-1]): # do not include
+                if(DP[i][j] == DP[i-1][j]):
+                    i = i-1
+                    j = j+1
+
+
+    output = str(DP[len(A)][len(B)]) + '\n' + solution
 
     if output_file is not None:
         with open(output_file, 'w') as f:
