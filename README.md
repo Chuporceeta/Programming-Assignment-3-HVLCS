@@ -86,5 +86,24 @@ This is correct because the base case is accounted for and starts the number off
 Give pseudocode of an algorithm to compute the length of the HVLCS of given strings A and B. What is the runtime of your algorithm?
 
 ```
+A, B = input strings
+val = array of character values
+N = len(A)
+M = len(B)
 
+OPT = (N+1)x(M+1)x2 array, OPT[i][j] = [max_val, length]
+OPT[0][0..M] = OPT[0..N][0] = [0, 0]
+
+for i := 1 to N
+    for j := 1 to M
+        if A[i-1] == B[j-1]
+            OPT[i][j][0] = val[A[i-1]] + OPT[i-1][j-1][0]
+            OPT[i][j][1] = OPT[i-1][j-1][1] + 1
+        else
+            if OPT[i-1][j][0] > OPT[i][j-1][0]
+                OPT[i][j] = OPT[i-1][j]
+            else
+                OPT[i][j] = OPT[i][j-1]
+
+return OPT[N][M][1]
 ```
