@@ -75,11 +75,15 @@ v(a_i)+OPT(i-1, j-1)  & \quad a_i = b_j
 \end{cases}
 $$
 
-The base case returns 0 if index i or j is 0 so the algorithm starts at 0.
-If $a_i$ does not equal $b_j$ then it returns the previous largest solution.
-If $a_i$ does equal $b_j$ then returns the current solution plus the value of $a_i$ to the answer.
+The overlapping subproblems are the same HVLCS problem performed on substrings of A and B.
 
-This is correct because the base case is accounted for and starts the number off at 0, and then for each matching character in a given sequence if character A and character B match then it will add the value of the character to the solution. It is always adding to the previous largest solution to maximize the value therefore it will find the maximum value.
+When one of the substrings is empty (the base case), there are no common characters, so the solution must be 0.
+
+When the substrings do not end with the same character, then the last character of one of the substrings cannot contribute anything to the value, so the solution must be the maximum of the solutions for the two subproblems created by considering the same substrings minus the last character for one of the strings.
+
+When the substrings do end with the same character, then those characters are part of a common subsequence and can contribute to the value, so the solution must be that character's value plus the solution for the subproblem created by considering the same substrings minus the last character for both strings.
+
+Therefore, the recurrence relation fully describes what the maximum common subsequence value must be for any pair of strings.
 
 ## Question 3: Big-Oh
 
