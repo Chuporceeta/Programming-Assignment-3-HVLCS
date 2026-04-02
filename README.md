@@ -111,3 +111,5 @@ for i := 1 to N
 
 return OPT[N][M][1]
 ```
+
+The runtime of this algorithm is $O(NM)$, since we have two nested loops running $N$ and $M$ times respectively, and the operations inside the loops are all $O(1)$.
