@@ -21,8 +21,8 @@ $$
 OPT(i,j)=
 \begin{cases}
 0 & \quad \text{$i = 0 \wedge j = 0$}\\ 
-max(OPT(i-1, j), OPT(i, j-1)) & \quad \text{$if a \neq b$}\\
-c+max(OPT(i-1, j), OPT(i, j-1))  & \quad \text{$if a = b$}
+max(OPT(i-1, j), OPT(i, j-1)) & \quad \text{$if a_i \neq b_j$}\\
+v(a_i)+OPT(i-1, j-1)  & \quad \text{$if a_i = b_j$}
 \end{cases}
 $$
 
