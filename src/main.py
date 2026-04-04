@@ -36,20 +36,22 @@ if __name__ == '__main__':
             else:
                 DP[i][j] = max(DP[i-1][j], DP[i][j-1])
 
+
     solution = ""
-    # BACKTRACKING HERE
-    for i in range(len(A) - 1, -1, -1):
-        for j in range(len(B)-1, -1, -1):
 
-            if DP[i][j] == DP[i-1][j-1] + values[A[i-1]]: # include
-                solution += str(DP[i][j])
-                i = i-1
-                pass
+    i = len(A)
+    j = len(B)
 
-            elif DP[i][j] == max(DP[i-1][j], DP[i][j-1]): # do not include
-                if(DP[i][j] == DP[i-1][j]):
-                    i = i-1
-                    j = j+1
+    while i > -1 and j > -1:
+        if DP[i][j] == DP[i-1][j-1] + values[A[i-1]]:  # include
+            solution = str(A[i-1]) + solution
+            i = i-1
+            j = j-1
+
+        elif DP[i][j] == DP[i-1][j]:  # do not include
+            i = i-1
+        elif DP[i][j] == DP[i][j-1]:
+            j = j-1
 
 
     output = str(DP[len(A)][len(B)]) + '\n' + solution
